@@ -29,13 +29,13 @@ class GFG {
 
 class Solution {
     int missingNumber(int array[], int n) {
-        Arrays.sort(array);
-        int i = 0;
-        for(i=0;i<array.length;i++){
-            if(array[i] != i+1){
-            break;
+        int xor1 = 0,xor2 = 0;
+        int m = n-1;
+        for(int i=0;i<m;i++){
+            xor2 = xor2 ^ array[i];
+            xor1 = xor1 ^ (i+1);
         }
-        }
-        return i+1;
+        xor1 = xor1 ^ n;
+        return xor1 ^ xor2;
     }
 }
